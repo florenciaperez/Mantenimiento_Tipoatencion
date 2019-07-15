@@ -1,5 +1,5 @@
 package entidades;
-// Generated 24/06/2019 09:52:53 AM by Hibernate Tools 4.3.1
+// Generated 14-jul-2019 21:57:39 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,22 +11,24 @@ public class Atencion  implements java.io.Serializable {
 
 
      private int idAtencion;
-     private Mascotaporcliente mascotaporcliente;
-     private Personal personal;
      private Date fechaAtencion;
      private String diagnostico;
      private Date horaAtencion;
+     private int idPersonal;
+     private int idMascota;
+     private int idcliente;
 
     public Atencion() {
     }
 
-    public Atencion(int idAtencion, Mascotaporcliente mascotaporcliente, Personal personal, Date fechaAtencion, String diagnostico, Date horaAtencion) {
+    public Atencion(int idAtencion, Date fechaAtencion, String diagnostico, Date horaAtencion, int idPersonal, int idMascota, int idcliente) {
        this.idAtencion = idAtencion;
-       this.mascotaporcliente = mascotaporcliente;
-       this.personal = personal;
        this.fechaAtencion = fechaAtencion;
        this.diagnostico = diagnostico;
        this.horaAtencion = horaAtencion;
+       this.idPersonal = idPersonal;
+       this.idMascota = idMascota;
+       this.idcliente = idcliente;
     }
    
     public int getIdAtencion() {
@@ -35,20 +37,6 @@ public class Atencion  implements java.io.Serializable {
     
     public void setIdAtencion(int idAtencion) {
         this.idAtencion = idAtencion;
-    }
-    public Mascotaporcliente getMascotaporcliente() {
-        return this.mascotaporcliente;
-    }
-    
-    public void setMascotaporcliente(Mascotaporcliente mascotaporcliente) {
-        this.mascotaporcliente = mascotaporcliente;
-    }
-    public Personal getPersonal() {
-        return this.personal;
-    }
-    
-    public void setPersonal(Personal personal) {
-        this.personal = personal;
     }
     public Date getFechaAtencion() {
         return this.fechaAtencion;
@@ -70,6 +58,27 @@ public class Atencion  implements java.io.Serializable {
     
     public void setHoraAtencion(Date horaAtencion) {
         this.horaAtencion = horaAtencion;
+    }
+    public int getIdPersonal() {
+        return this.idPersonal;
+    }
+    
+    public void setIdPersonal(int idPersonal) {
+        this.idPersonal = idPersonal;
+    }
+    public int getIdMascota() {
+        return this.idMascota;
+    }
+    
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
+    }
+    public int getIdcliente() {
+        return this.idcliente;
+    }
+    
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
 

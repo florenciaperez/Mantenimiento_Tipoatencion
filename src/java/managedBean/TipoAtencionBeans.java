@@ -5,10 +5,9 @@
  */
 package managedBean;
 
-import Dao.ClienteDao;
-import entidades.Cliente;
+import Dao.TipoAtencionDao;
+import entidades.Tipoatencion;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -16,91 +15,73 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author USUARIOWIN10
+ * @author Lenovo
  */
 @ManagedBean
 @ViewScoped
-public class ClienteBeans {
-
-    //private Date date9;
-    private Cliente cliente;
-     private boolean banderaSelect = false;
-
-    //constructor
-    public ClienteBeans() {
-        this.cliente = new Cliente();
+public class TipoAtencionBeans {
+    
+    private Tipoatencion tipoatenciones;
+    private boolean banderaSelect = false;
+    
+    public TipoAtencionBeans(){
+        this.tipoatenciones = new Tipoatencion();
+        
     }
-    private java.util.Date data;
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public String guardarCliente() {
-        ClienteDao clientedao = new ClienteDao();
-        boolean respuesta = clientedao.guardarCliente(cliente);
+       public String guardarTipoAtencion() {
+        TipoAtencionDao dao = new TipoAtencionDao();
+        boolean respuesta = dao.guardarTipoAtencion(tipoatenciones);
         if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se guardo correctamente"));
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo registrar"));
         }
-        return "/RegistroCliente";
+        return "/TipoAtencion";
 
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public String actualizarCliente() {
+       
+        public String ActualizarTipoAtencion() {
         try {
-            ClienteDao mascotadao = new ClienteDao();
-            boolean resp = mascotadao.ActualizarMascota(cliente);
+            TipoAtencionDao TipoAtencionDao = new TipoAtencionDao();
+            boolean resp = TipoAtencionDao.ActualizarTipoAtencion(tipoatenciones);
             if (resp) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se actualizo correctamente"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se Pudo Actualizar"));
 
             }
-            mascotadao.ActualizarMascota(cliente);
+            TipoAtencionDao.ActualizarTipoAtencion(tipoatenciones);
         } catch (Exception e) {
             System.out.println("Error::" + e);
         }
-        return "/RegistroCliente";
+        return "/TipoAtencion";
     }
-
-    public ArrayList<Cliente> listarCliente() {
-        ArrayList<Cliente> milista = new ArrayList<>();
-        ClienteDao dao = new ClienteDao();
-        milista = dao.listarCliente();
+         public ArrayList<Tipoatencion> listarTipoAtencion() {
+        ArrayList<Tipoatencion> milista = new ArrayList<>();
+        TipoAtencionDao dao = new TipoAtencionDao();
+        milista = dao.listarTipoAtencion();
         return milista;
 
     }
-
-    public String limpiar() {
-        banderaSelect=false;
-        return "/RegistroCliente.xhtml";
-    }
-
-    public String eliminar(Cliente data) {
-        ClienteDao madao = new ClienteDao();
-        boolean respuesta = madao.eliminarMascota(data);
+       
+    public String eliminar(Tipoatencion data) {
+        TipoAtencionDao tadao = new TipoAtencionDao();
+        boolean respuesta = tadao.eliminarTipoAtencion(data);
         if (respuesta) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se elimino correctamente"));
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo eliminar"));
         }
 
-        return "/RegistroCliente.xhtml";
+        return "/TipoAtencion.xhtml";
     }
+    
+     public String limpiar() {
+        banderaSelect=false;
+        return "/TipoAtencion.xhtml";
+    }
+     
+     
     public void selectBandera() {
         banderaSelect = true;
     }
@@ -112,5 +93,23 @@ public class ClienteBeans {
     public void setBanderaSelect(boolean banderaSelect) {
         this.banderaSelect = banderaSelect;
     }
+    
+    public Tipoatencion getTipoatenciones() {
+        return tipoatenciones;
+    }
+
+    public void setTipoatenciones(Tipoatencion tipoatenciones) {
+        this.tipoatenciones = tipoatenciones;
+    }
+    
+    
+    
+    
+    
+    
+
+   
+    
+    
     
 }
