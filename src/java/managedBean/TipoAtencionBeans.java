@@ -36,25 +36,25 @@ public class TipoAtencionBeans {
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo registrar"));
         }
-        return "/TipoAtencion";
+        return "/RegistroTipoAtencion";
 
     }
        
-        public String ActualizarTipoAtencion() {
+        public String actualizarTipoAtencion() {
         try {
-            TipoAtencionDao TipoAtencionDao = new TipoAtencionDao();
-            boolean resp = TipoAtencionDao.ActualizarTipoAtencion(tipoatenciones);
+            TipoAtencionDao mascotadao = new TipoAtencionDao();
+            boolean resp = mascotadao.ActualizarTipoAtencion(tipoatenciones);
             if (resp) {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se actualizo correctamente"));
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se Pudo Actualizar"));
 
             }
-            TipoAtencionDao.ActualizarTipoAtencion(tipoatenciones);
+            mascotadao.ActualizarTipoAtencion(tipoatenciones);
         } catch (Exception e) {
             System.out.println("Error::" + e);
         }
-        return "/TipoAtencion";
+        return "/RegistroTipoAtencion";
     }
          public ArrayList<Tipoatencion> listarTipoAtencion() {
         ArrayList<Tipoatencion> milista = new ArrayList<>();
@@ -73,12 +73,12 @@ public class TipoAtencionBeans {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("No se pudo eliminar"));
         }
 
-        return "/TipoAtencion.xhtml";
+        return "/RegistroTipoAtencion.xhtml";
     }
     
      public String limpiar() {
         banderaSelect=false;
-        return "/TipoAtencion.xhtml";
+        return "/RegistroTipoAtencion.xhtml";
     }
      
      

@@ -17,7 +17,7 @@
                         <p:panel style="width: 40%">
                             <f:facet name="header">
                                 <p:column>
-                                    <p:outputLabel value="Mascotas"/>
+                                    <p:outputLabel value="Cliente por Mascotas"/>
                                 </p:column>
                             </f:facet>
                             <p:panelGrid>
@@ -30,7 +30,7 @@
                                     <p:column>
                                         <p:selectOneMenu value="#{mascotaPorClienteBeans.idCliente}">
                                             <f:selectItem itemLabel="--Seleccione un Cliente--"/>
-                                            <f:selectItems value="#{mascotaPorClienteBeans.listacliente}" var="cliente" itemLabel="#{cliente.nombre}" itemValue="#{cliente.idcliente}"/>
+                                            <f:selectItems value="#{mascotaPorClienteBeans.listacliente}" var="cliente" itemLabel="#{cliente.nombre}" itemValue="#{cliente.idCliente}"/>
                                         </p:selectOneMenu>
                                     </p:column>
                                 </p:row>

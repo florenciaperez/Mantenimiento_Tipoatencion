@@ -13,12 +13,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utilitarios.HibernateUtil;
 
-
 /**
  *
  * @author Lenovo
  */
-public class TipoAtencionDao  implements  ITipoAtencion{
+public class TipoAtencionDao implements ITipoAtencion {
 
     @Override
     public boolean guardarTipoAtencion(Tipoatencion tipoatencion) {
@@ -40,43 +39,21 @@ public class TipoAtencionDao  implements  ITipoAtencion{
 
     @Override
     public ArrayList<Tipoatencion> listarTipoAtencion() {
-       Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
         ArrayList<Tipoatencion> milista = new ArrayList<>();
         //Create la consulta hacia la base de datos
-        Query query = sesion.createQuery("from Mascota");
+        Query query = sesion.createQuery("from Tipoatencion");
         //Ejecutar la consulta y obtener la lista
         milista = (ArrayList<Tipoatencion>) query.list();
-          sesion.close();
+        sesion.close();
         return milista;
-
-    }
-
-    @Override
-    public boolean ActualizarTipoAtencion(Tipoatencion tipoatencion) {
-        System.out.println("error" + tipoatencion.getIdTipoAtencion());
-        boolean resp = true;
-        Session sesion = null;
-        try {
-            sesion = HibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = sesion.beginTransaction();
-            sesion.update(tipoatencion);
-            transaction.commit();
-        } catch (Exception e) {
-            System.out.println("Error en actualizar::" + e);
-        } finally {
-            if (sesion != null) {
-                sesion.close();
-            }
-
-        }
-        return resp;
 
     }
 
     @Override
     public boolean eliminarTipoAtencion(Tipoatencion tipoatencion) {
 
-           Session sesion = null;
+        Session sesion = null;
         boolean resp = true;
         try {
             sesion = HibernateUtil.getSessionFactory().openSession();
@@ -97,5 +74,28 @@ public class TipoAtencionDao  implements  ITipoAtencion{
         }
         return resp;
     }
-   
+
+    @Override
+    public boolean ActualizarTipoAtencion(Tipoatencion tipoatencion) {
+
+       
+        boolean resp = true;
+        Session sesion = null;
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction = sesion.beginTransaction();
+            sesion.update(tipoatencion);
+            transaction.commit();
+        } catch (Exception e) {
+            System.out.println("Error en actualizar::" + e);
+        } finally {
+            if (sesion != null) {
+                sesion.close();
+            }
+
+        }
+        return resp;
+
+    }
+    
 }
